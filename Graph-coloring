@@ -1,0 +1,34 @@
+colors = ['Red', 'Blue', 'Green', 'Yellow', 'Black', 'Orange', 'Pink', 'Purple', 'White', 'Brown', ]
+nodes = ['a', 'b', 'c', 'd', 'e', 'f']
+neighbours = {}
+neighbours['a'] = ['b', 'c', 'd']
+neighbours['b'] = ['a', 'c']
+neighbours['c'] = ['a', 'b', 'd', 'e', 'f']
+neighbours['d'] = ['a', 'c', 'e']
+neighbours['e'] = ['c', 'd', 'f']
+neighbours['f'] = ['c', 'e']
+
+color_nodes = {}
+
+def function(node, color):
+    for neighbour in neighbours.get(node):
+        color_neighbour = color_nodes.get(neighbour)
+        if color_neighbour == color:
+            return False
+    return True
+
+
+def colorNode(node):
+    for color in colors:
+        if function(node, color):
+            return color
+
+
+for node in nodes:
+    color_nodes[node] = colorNode(node)
+print(color_nodes)
+used = []
+for cn in color_nodes.values():
+    if cn not in used:
+        used.append(cn)
+print('Chromatic number is ', len(used))
