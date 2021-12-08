@@ -1,0 +1,40 @@
+x = 0
+y = 0
+m = 4
+n = 3
+print(f'Initial state - ({x,y})')
+print(f'Capacities - ({m,n})')
+print('Goal state - (2,y)')
+while x != 2:
+    r = int(input('Enter Rule - '))
+    if r == 1:
+        print(f'Fill the {m} gallon jug completely')
+        x = m
+    elif r == 2:
+        print(f'Fill the {n} gallon jug completely')
+        y = n
+    elif r == 3:
+        print(f'Pour some part from the {m} gallon jug')
+        a = m - x
+        x = m
+        y -= a
+    elif r == 4:
+        print(f'Pour some part from the {n} gallon jug')
+        a = n - y
+        y = n
+        x -= a
+    elif r == 5:
+        print(f'Pour water from jug1 to jug2')
+        y += x
+        x = 0
+    elif r == 6:
+        print(f'Pour water from jug2 to jug1')
+        x += y
+        y = 0
+    elif r==7:
+        print(f'Empty {m} gallon jug')
+        x=0;
+    elif r==8:
+        print(f'Empty {n} gallon jug')
+        y=0
+    print(f'({x,y})')
